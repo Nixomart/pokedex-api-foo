@@ -49,31 +49,31 @@ export default function PokemonPage() {
         onClick={() => navigate("/")}
         className="  space-x-3 text-white h-[10%] items-center flex text-xl  pl-60 "
       >
-        <div className="hover:underline hover:cursor-pointer flex items-center  w-max space-x-3">
+        <div className=" hover:underline hover:cursor-pointer flex items-center  w-max space-x-3">
           <FaArrowCircleLeft />
 
           <p>Volver</p>
         </div>
       </div>
-      <div className="flex h-[50%]  ">
-        <div className="w-1/2  mt-auto mx-auto ">
+      <div className="flex h-[50%] lg:flex lg:flex-col ">
+        <div className="w-1/2 lg:w-full  mt-auto mx-auto ">
           <h1 className="text-7xl text-center ">{pokemon.name}</h1>
         </div>
-        <div className="w-1/2 mt-auto ">
+        <div className="w-1/2 lg:w-full mt-auto ">
           <img
-            className="w-96 hover:drop-shadow-2xl transition-all ease-in-out"
+            className="w-96 lg:w-60 lg:mx-auto hover:drop-shadow-2xl transition-all ease-in-out"
             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`}
             alt={pokemon.sprites.front_default}
           />
         </div>
       </div>
-      <div className="h-[40%] flex items-center justify-around  ">
+      <div className="h-[40%] flex items-center lg:flex lg:flex-col justify-around  ">
         <div className="w-1/2 text-center">
           <h2 className="text-5xl">Stats </h2>
         </div>
-        <div className=" w-1/2 justify-center pr-40">
+        <div className=" w-1/2 justify-center pr-40 lg:pr-0">
           {pokemon.stats.map((stat: any, index:any) => (
-            <div key={index} className="flex justify-between space-y-3">
+            <div key={index} className="flex justify-between space-y-3 lg:space-y-0">
               <h3 className="text-xl font-semibold">{stat.stat.name}</h3>
               <p>{stat.base_stat}</p>
             </div>

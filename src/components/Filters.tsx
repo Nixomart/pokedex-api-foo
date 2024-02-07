@@ -49,7 +49,7 @@ export default function Filters() {
     }
   }
   return (
-    <div className="py-5 grid grid-cols-7">
+    <div className="py-5 grid grid-cols-7 lg:flex-col lg:flex">
       <div className="col-span-3  w-5/6 shadow-lg rounded-xl flex items-center ">
         <input
         onChange={(e)=>handleSearchPokemon(e)}
