@@ -26,25 +26,26 @@ export default function PokemonPage() {
       axios
         .get(`https://pokeapi.co/api/v2/pokemon/${pokemonname}`)
         .then((data) => {
-
           console.log(data.data);
-          
-          setPokemon(data.data)
-          setError(false)
-           setLoaded(true);
+
+          setPokemon(data.data);
+          setError(false);
+          setLoaded(true);
         })
-        .catch(() =>{
-         setError(true)
-         setLoaded(true)}
-         );
+        .catch(() => {
+          setError(true);
+          setLoaded(true);
+        });
       console.log("hay que buscar!");
     }
   }, []);
   const navigate = useNavigate();
   return loaded === false ? (
     <Loading />
-  ) : error === true ? <Errors error={2} />  :  (
-    <section className="w-screen h-screen text-white from-green-500 to-green-700 bg-gradient-to-b ">
+  ) : error === true ? (
+    <Errors error={2} />
+  ) : (
+    <section className="w-screen  h-screen text-white from-green-500 to-green-700 bg-gradient-to-b ">
       <div
         onClick={() => navigate("/")}
         className="  space-x-3 text-white h-[10%] items-center flex text-xl  pl-60 "
@@ -57,7 +58,32 @@ export default function PokemonPage() {
       </div>
       <div className="flex h-[50%] lg:flex lg:flex-col ">
         <div className="w-1/2 lg:w-full  mt-auto mx-auto ">
-          <h1 className="text-7xl text-center ">{pokemon.name}</h1>
+          <p className="text-4xl font-extrabold text-center ">#{pokemon.id}</p>
+          <h1 className="text-7xl text-center lg:text-2xl ">{pokemon.name}</h1>
+          <div className="lg:flex justify-center space-x-5">
+
+          <div className=" pt-5 space-y-5">
+            <p className="font-medium text-center">
+              Altura:{" "}
+              <span className="bg-red-500  px-3 text-white rounded-lg">
+                {pokemon.height}
+              </span>
+            </p>
+            <p className="font-medium text-center">
+              Peso:{" "}
+              <span className="bg-green-500  px-3 text-white rounded-lg">
+                {pokemon.weight}
+              </span>
+            </p>
+          </div>
+          <div className="text-center pt-5">
+            <p className="font-semibold">Habilidades: </p>
+            {pokemon.abilities.map((h: any) => (
+              <p>{h.ability.name}</p>
+            ))}
+          </div>
+          </div>
+
         </div>
         <div className="w-1/2 lg:w-full mt-auto ">
           <img
@@ -69,13 +95,16 @@ export default function PokemonPage() {
       </div>
       <div className="h-[40%] flex items-center lg:flex lg:flex-col justify-around  ">
         <div className="w-1/2 text-center">
-          <h2 className="text-5xl">Stats </h2>
+          <h2 className="text-5xl lg:text-xl lg:hidden font-bold">Stats </h2>
         </div>
         <div className=" w-1/2 justify-center pr-40 lg:pr-0">
-          {pokemon.stats.map((stat: any, index:any) => (
-            <div key={index} className="flex justify-between space-y-3 lg:space-y-0">
+          {pokemon.stats.map((stat: any, index: any) => (
+            <div
+              key={index}
+              className="flex justify-between space-y-3 lg:space-y-0"
+            >
               <h3 className="text-xl font-semibold">{stat.stat.name}</h3>
-              <p>{stat.base_stat}</p>
+              <p className="text-lg">{stat.base_stat}</p>
             </div>
           ))}
         </div>

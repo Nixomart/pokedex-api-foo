@@ -103,7 +103,7 @@ export default function Filters() {
             className="text-xl hover:cursor-pointer"
           />
           <IoMdArrowDropdown
-            onClick={() => handleFilterId("asc")}
+            onClick={() => handleFilterId("desc")}
             className="text-xl hover:cursor-pointer
           "
           />

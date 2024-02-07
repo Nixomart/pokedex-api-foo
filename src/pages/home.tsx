@@ -11,7 +11,7 @@ export default function Home() {
   return !loaded  ? (
     <Loading />
   ) : error !== 0 ? <Errors error={error} /> :  (
-    <div className="bg-gray-50 lg:px-2 space-y-10 px-10">
+    <div className="bg-gray-50 lg:px-0 h-screen space-y-10 px-10">
       <h1 className="text-4xl items-center font-bold">Pokemons</h1>
       <Filters />
       <Pokemons pokemons={pokemons} />
